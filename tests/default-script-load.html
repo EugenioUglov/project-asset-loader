@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Test Asset Loader (Default script)</title>
+</head>
+<body>
+
+    <h1>Test UMD build</h1>
+    <div id="content-container">Here must be a content</div>
+
+    <!-- Connect UMD-script of the package -->
+    <script src="/dist/project-asset-loader.umd.js"></script>
+
+    <script>
+        const loader = new ProjectAssetLoader({ enableDebug: true });
+        console.log(loader);
+
+        // Test loading css
+        loader.loadStyle({path: './assets/styles.css'}).then(() => {
+            console.log("Styles downloaded successfully!");
+        });
+    </script>
+</body>
+</html>
