@@ -112,4 +112,4 @@ Dynamically changes the base path used for resolving relative URLs.
 
 ## License
 
-[MIT](LICENSE)
+MIT LICENSE
