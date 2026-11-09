@@ -91,11 +91,11 @@ When included via a standard `<script>` tag, `ProjectAssetLoader` is available d
 - **`options.currentScriptUrl`** *(string, optional)*: Explicit base path URL for relative asset resolving.
 - **`options.enableDebug`** *(boolean, optional)*: Toggles internal debug logging.
 
-### `loadJavaScript(path)`
+### `loadJavaScript({ path })`
 Loads a JavaScript file asynchronously. Returns a `Promise`.
 - **`path`** *(string)*: Absolute or relative URL to the JavaScript file.
 
-### `loadStyle(path)`
+### `loadStyle({ path })`
 Injects a stylesheet `<link>` tag into `<head>`. Returns a `Promise`.
 - **`path`** *(string)*: Absolute or relative URL to the CSS file.
 
