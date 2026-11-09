@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <script type="importmap">
+    {
+      "imports": {
+        "project-asset-loader": "./node_modules/project-asset-loader/dist/project-asset-loader.esm.js"
+      }
+    }
+  </script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Website</title>
+</head>
+<body>
+    <script type="module">
+        import ProjectAssetLoader from 'project-asset-loader';
+
+        const loader = new ProjectAssetLoader();
+        loader.loadJavaScript({path: './test.js'})
+            .then(() => console.log('Script loaded!'));
+
+    </script>
+</body>
+</html>

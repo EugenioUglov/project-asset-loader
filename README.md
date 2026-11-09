@@ -33,12 +33,12 @@ const loader = new ProjectAssetLoader({
 });
 
 // Load CSS dynamically
-loader.loadStyle('./css/styles.css')
+loader.loadStyle({ path: './css/styles.css' })
   .then(() => console.log('Styles loaded!'))
   .catch(err => console.error(err));
 
 // Load JS dynamically
-loader.loadJavaScript('./js/feature.js')
+loader.loadJavaScript({ path: './js/feature.js' })
   .then(() => console.log('Script loaded!'));
 
 // Load Mustache HTML template and render to DOM element
