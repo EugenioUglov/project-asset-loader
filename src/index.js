@@ -107,7 +107,7 @@ class ProjectAssetLoader {
     }
     
     #getNormalizedPath({ path }) {
-        if (!path.includes('/')) {
+        if (/^https?:\/\//i.test(path)) {
             return this.#basePath + path;
         }
         
