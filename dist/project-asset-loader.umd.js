@@ -113,11 +113,14 @@
         }
         
         #getNormalizedPath({ path }) {
-            if (!path.includes('/')) {
-                return this.#basePath + path;
+            // If path is already absolute, leave it
+            if (/^https?:\/\//i.test(path)) {
+                return path;
             }
             
-            return path;
+            // Combine base path with the requested file path
+            // FEATURE_BASE_PATH should point to the correct folder
+            return (typeof this.#basePath !== 'undefined' ? this.#basePath : '') + path.replace(/^\/+/, '');
         }
     }
 
