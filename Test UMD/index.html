@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Asset Loader Demo</title>
+  
+  <!-- Include UMD Bundle -->
+  <script src="/node_modules/project-asset-loader/dist/project-asset-loader.umd.js"></script>
+</head>
+<body>
+  <div id="content-container">Loading content...</div>
+
+  <script>
+    const loader = new ProjectAssetLoader();
+
+    loader.loadStyle({ path: './style.css' });
+    loader.loadJavaScript({ path: './test.js' });
+
+    // Render HTML template dynamically
+    loader.loadMustacheHtmlToDomElementById({
+      targetId: 'content-container',
+      pathHtml: './templates/widget.html',
+      data: { title: 'Welcome!' }
+    });
+  </script>
+</body>
+</html>
