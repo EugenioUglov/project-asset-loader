@@ -16,7 +16,7 @@ class ProjectAssetLoader {
     #basePath = "";
     #cache = new Map();
     #enableDebug = false;
-    #mustacheCdnPath = 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/4.2.0/mustache.min.js';
+    #mustacheCdnPath = 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.min.js';
 
     setBasePath({ path }) {
         this.#basePath = path;
