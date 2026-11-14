@@ -8,6 +8,7 @@ Install the package via npm:
 
 ```bash
 npm install project-asset-loader
+```
 
 Running the Tests
 The tests are structured as static HTML pages to verify package functionality across different module environments (ESM and UMD).
