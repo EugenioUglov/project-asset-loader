@@ -60,12 +60,28 @@ class ProjectAssetLoader {
 
         return promise;
     }
-
+    
     loadStyle({ path }) {
-        return new Promise((resolve, reject) => {
+        const normalizedPath = this.#getNormalizedPath({ path });
+        
+        // Check if the promise is already cached
+        if (this.#cache.has(normalizedPath)) {
+            return this.#cache.get(normalizedPath);
+        }
+
+        // Check if the stylesheet link already exists in the DOM (e.g., loaded via HTML)
+        const existingLink = document.querySelector(`link[rel="stylesheet"][href="${normalizedPath}"]`);
+
+        if (existingLink) {
+            const promise = Promise.resolve();
+            this.#cache.set(normalizedPath, promise);
+            return promise;
+        }
+
+        const promise = new Promise((resolve, reject) => {
             const link = document.createElement('link');
             link.rel = 'stylesheet';
-            link.href = this.#getNormalizedPath({ path });
+            link.href = normalizedPath;
 
             // Resolve the Promise when the browser has fully loaded the CSS
             link.onload = () => {
@@ -73,11 +89,19 @@ class ProjectAssetLoader {
                 resolve();
             };
 
-            link.onerror = () => reject(new Error(`Failed to load CSS: ${path}`));
+            link.onerror = () => {
+                this.#cache.delete(normalizedPath);
+                reject(new Error(`Failed to load CSS: ${normalizedPath}`));
+            };
 
             document.head.appendChild(link);
         });
+
+        this.#cache.set(normalizedPath, promise);
+
+        return promise;
     }
+
 
     async loadMustacheHtmlToDomElementById({ targetId, pathHtml, data }) {
         await this.loadJavaScript({ path: this.#mustacheCdnPath });
