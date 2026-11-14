@@ -1,6 +1,6 @@
 {
   "name": "project-asset-loader",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "type": "module",
   "main": "dist/project-asset-loader.umd.js",
   "module": "dist/project-asset-loader.esm.js",
