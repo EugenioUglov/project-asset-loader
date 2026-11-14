@@ -2,8 +2,6 @@
 
 A lightweight JavaScript utility for dynamically loading scripts, CSS stylesheets, and rendering HTML templates using Mustache.js.
 
-☕🤗 If you find this package useful, you can [buy me a coffee](https://buymeacoffee.com/eugeniouglb)
-
 ## Links
 
 - **Main Repository:** [GitHub - project-asset-loader (main)](https://github.com/EugenioUglov/project-asset-loader/tree/main)
@@ -116,6 +114,11 @@ Fetches an HTML template, automatically loads Mustache.js if not present, render
 Dynamically changes the base path used for resolving relative URLs.
 
 ---
+
+## Support ☕🤗
+
+If you find this package useful, you can
+[![Buy Me A Coffee](https://img.shields.io/badge/Buy%20Me%20a%20Coffee-ffdd00?style=for-the-badge&logo=buy-me-a-coffee&logoColor=black)](https://buymeacoffee.com/eugeniouglb)
 
 ## License
 
