@@ -13,10 +13,10 @@ class ProjectAssetLoader {
         this.#enableDebug && console.log("📦 AssetLoader: Initialized with base path ->", this.#basePath);
     }
 
+    #mustacheCdnPath = 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.min.js';
     #basePath = "";
     #cache = new Map();
     #enableDebug = false;
-    #mustacheCdnPath = 'https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.1/mustache.min.js';
 
     setBasePath({ path }) {
         this.#basePath = path;
@@ -25,21 +25,34 @@ class ProjectAssetLoader {
     loadJavaScript({ path }) {
         const normalizedPath = this.#getNormalizedPath({ path });
         
+        // Check if the promise is already cached
         if (this.#cache.has(normalizedPath)) {
             return this.#cache.get(normalizedPath);
+        }
+
+        // Check if the script tag already exists in the DOM (e.g., loaded via HTML)
+        const existingScript = document.querySelector(`script[src="${normalizedPath}"]`);
+
+        if (existingScript) {
+            const promise = Promise.resolve();
+            this.#cache.set(normalizedPath, promise);
+            return promise;
         }
 
         const promise = new Promise((resolve, reject) => {
             const script = document.createElement('script');
             script.src = normalizedPath;
+            
             script.onload = () => {
                 this.#enableDebug && console.log("📦 AssetLoader: Loaded JS ->", script.src);
                 resolve();
             };
+            
             script.onerror = () => {
                 this.#cache.delete(normalizedPath);
-                reject(new Error(`Failed to load script: ${normalizedPath}`))
+                reject(new Error(`Failed to load script: ${normalizedPath}`));
             };
+            
             document.body.appendChild(script);
         });
 
