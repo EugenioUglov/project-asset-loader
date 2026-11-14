@@ -2,9 +2,11 @@
 
 A lightweight JavaScript utility for dynamically loading scripts, CSS stylesheets, and rendering HTML templates using Mustache.js.
 
+☕🤗 If you find this package useful, you can [buy me a coffee](https://buymeacoffee.com/eugeniouglb)
+
 ## Links
 
-- **Main Repository:** [GitHub - project-asset-loader (main)](https://github.com/EugenioUglov/project-asset-loader/tree/main)[cite: 3]
+- **Main Repository:** [GitHub - project-asset-loader (main)](https://github.com/EugenioUglov/project-asset-loader/tree/main)
 - **Tests Branch:** [GitHub - project-asset-loader (isolated-tests)](https://github.com/EugenioUglov/project-asset-loader/tree/test/isolated-tests)
 
 ## Features
